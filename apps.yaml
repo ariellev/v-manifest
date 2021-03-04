@@ -1,3 +1,4 @@
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: saas
@@ -8,11 +9,11 @@ spec:
   project: default
   source:
     path: helm
-    resourceURL: https:/github.com/ariellev/v-manifest.git
+    repoURL: git@github.com:ariellev/v-manifest.git
     targetRevision: HEAD
   destination:
     namespace: prod
-    server: http://kubernetes.default.svc
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       selfHeal: true

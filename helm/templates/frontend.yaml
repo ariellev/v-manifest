@@ -8,18 +8,18 @@ spec:
   project: default
   source:
     path: helm
-    resourceURL: https:/github.com/ariellev/v-app.git
+    repoURL: git@github.com:ariellev/v-app.git
     targetRevision: HEAD
     helm:
       values: |
         image:
           tag: latest
         ingress:
-          host: frontend.192.168.49.2.xip.io
+          host: frontend.192.168.64.7.xip.io
         version: v3
   destination:
     namespace: prod
-    server: http://kubernetes.default.svc
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       selfHeal: true

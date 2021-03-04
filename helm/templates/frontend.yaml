@@ -10,16 +10,14 @@ spec:
   source:
     path: helm
     repoURL: git@github.com:ariellev/v-app.git
-    targetRevision: v0.0.1
+    targetRevision: v0.0.2
     helm:
       values: |
-        image:
-          tag: v0.0.1
         ingress:
           host: 192.168.64.7.xip.io
         version: v3
   destination:
-    namespace: prod
+    namespace: dev
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:

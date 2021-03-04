@@ -10,11 +10,11 @@ spec:
   source:
     path: helm
     repoURL: git@github.com:ariellev/v-app.git
-    targetRevision: HEAD
+    targetRevision: v0.0.1
     helm:
       values: |
         image:
-          tag: latest
+          tag: v0.0.1
         ingress:
           host: 192.168.64.7.xip.io
         version: v3

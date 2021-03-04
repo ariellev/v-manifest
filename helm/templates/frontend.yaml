@@ -1,0 +1,26 @@
+kind: Application
+metadata:
+  name: frontend
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: helm
+    resourceURL: https:/github.com/ariellev/v-app.git
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        ingress:
+          host: frontend.192.168.49.2.xip.io
+        version: v3
+  destination:
+    namespace: prod
+    server: http://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

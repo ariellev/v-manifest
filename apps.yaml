@@ -1,0 +1,19 @@
+kind: Application
+metadata:
+  name: saas
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: helm
+    resourceURL: https:/github.com/ariellev/v-manifest.git
+    targetRevision: HEAD
+  destination:
+    namespace: prod
+    server: http://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
